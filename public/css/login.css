@@ -1,0 +1,97 @@
+body {
+    background: linear-gradient(to right, #1A1A1A, #FF6F20); /* Dark to neon orange gradient */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.login-container {
+    background: #2E2E2E; /* Dark background for the container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(255, 111, 32, 0.5); /* Glowing shadow */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 700;
+    color: #FF6F20; /* Neon orange */
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 111, 32, 0.7); /* Glow effect */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #FFFFFF; /* White text for labels */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FF6F20; /* Neon orange border */
+    border-radius: 5px;
+    font-size: 16px;
+    background: #1A1A1A; /* Dark background for inputs */
+    color: white; /* White text */
+}
+
+input:focus {
+    border-color: #FF9F40; /* Lighter neon orange on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 159, 64, 0.5); /* Glow effect */
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #FF6F20; /* Neon orange */
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #FF9F40; /* Lighter neon orange */
+}
+
+.btn-outline-secondary {
+    border: 1px solid #FF6F20; /* Neon orange border */
+    color: #FF6F20; /* Neon orange text */
+    background: none;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FF6F20; /* Neon orange background on hover */
+    color: white; /* White text on hover */
+}
+
+.alert {
+    display: none;
+    padding: 10px;
+    background: #FF4C4C; /* Bright red for alert */
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

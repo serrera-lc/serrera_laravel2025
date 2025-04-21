@@ -1,0 +1,37 @@
+body {
+    background-color: #1A1A1A; /* Dark background for contrast */
+}
+
+.navbar {
+    background-color: #FF6F20; /* Neon orange */
+    box-shadow: 0 0 10px rgba(255, 111, 32, 0.8); /* Glowing effect */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #FFFFFF !important; /* Bright white for text */
+}
+
+.nav-link:hover {
+    color: #FF9F40 !important; /* Lighter neon orange on hover */
+    text-shadow: 0 0 5px rgba(255, 159, 64, 0.7); /* Glow effect */
+}
+
+.logout-btn {
+    background-color: #FF6F20; /* Neon orange */
+    border-color: #FF6F20; /* Matching border */
+    color: white !important; /* Bright white */
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #FF9F40; /* Lighter neon orange */
+    border-color: #FF9F40; /* Matching border */
+}
+
+.container {
+    margin-top: 20px;
+    padding: 20px; /* Added padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+}
