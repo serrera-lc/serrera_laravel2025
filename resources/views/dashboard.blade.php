@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +6,16 @@
     <title>Dashboard</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
-    <style>
-
-    </style>
 </head>
 <body>
 
     @include('nav')
 
     <div class="container">
-        <h2>Welcome to Your Dashboard,  {{ session('user')->first_name }}!</h2>
+        <h2>Welcome to Your Dashboard, {{ session('user')->first_name ?? 'Guest' }}!</h2>
         <p>Here is where you can manage your account and settings.</p>
     </div>
 
-
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
-
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-
-=======
-<h2>Welcome to Your Dashboard,
-    {{ session('user')?->first_name ?? 'Guest' }}
-</h2>
->>>>>>> 3565232c3feebc5dea729802e15a161d096a2c8c

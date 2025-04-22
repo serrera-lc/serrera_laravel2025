@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usersinfo extends Model
 {
-    //
-    use HasUuids;
-    use HasFactory;
+    use HasUuids, HasFactory;
+
+    // Specify the table associated with the model
     protected $table = 'usersinfo';
+
+    // The attributes that are mass assignable
     protected $fillable = [
-        'id',
         'first_name',
         'last_name',
         'sex',
@@ -23,9 +24,16 @@ class Usersinfo extends Model
         'password',
         'user_type',
     ];
-    public $incrementing = false;
-    protected $keyType = 'string';
-    
-    
 
+    // Indicate that the model does not use auto-incrementing IDs
+    public $incrementing = false;
+
+    // Specify the key type as string for UUIDs
+    protected $keyType = 'string';
+
+    // Optionally, you might want to hash the password when setting it
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
