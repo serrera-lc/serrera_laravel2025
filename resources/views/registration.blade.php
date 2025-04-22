@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,41 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/registration.css">
 </head>
+
+
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="nav bar navbar-expanded-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Serrera_Laravel2025</a>
+            <a class="navbar-brand" href="#">
+
+            </a>
         </div>
+
     </nav>
+
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card p-4 shadow-sm">
                     <h2 class="mb-3">Register</h2>
-                    <form method="POST" action="{{ route('register.post') }}">
+                    <form method="POST" action="{{ route('register.save') }}">
                         @csrf
                         <div class="mb-3">
-                            <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" required>
                         </div>
                         <div class="mb-3">
-                            <label for="middle_name" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middle_name" name="middle_name">
+                            <label for="middlename" class="form-label">Middle Name</label>
+                            <input type="text" class="form-control" id="middlename" name="middlename">
                         </div>
                         <div class="mb-3">
-                            <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" required>
                         </div>
                         <div class="mb-3">
-                            <label for="birthday" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday" required>
+                            <label for="bod" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="bod" name="bod" required>
                         </div>
                         <div class="mb-3">
                             <label for="sex" class="form-label">Sex</label>
@@ -59,15 +66,20 @@
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
-                            <label class="form-check-label" for="terms">I agree with the Privacy Policy and Terms and Conditions</label>
+                            <label class="form-check-label" for="terms">I agree with the Privacy Policy and Terms and
+                                Conditions</label>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                         <br><br>
                         <a href="{{ route('login') }}" class="btn btn-secondary w-100">Go Back</a>
                     </form>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 </body>
+
 </html>

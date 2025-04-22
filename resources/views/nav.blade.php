@@ -1,28 +1,53 @@
 <style>
     body {
-        background-color: #F2EFE7;
+        background-color: #0D0D0D;
+        color: #F5F5F5;
+        font-family: 'Orbitron', sans-serif;
     }
-    .navbar { background-color: #48A6A7; }
-    .navbar-brand, .nav-link { color: white !important; }
-    .nav-link:hover { color: #D0EBF2 !important; }
+
+    .navbar {
+        background-color: #1A1A1A;
+        box-shadow: 0 0 15px #FF7300;
+    }
+
+    .navbar-brand, .nav-link {
+        color: #FF7300 !important;
+        text-shadow: 0 0 5px #FF7300;
+    }
+
+    .nav-link:hover {
+        color: #FFFFFF !important;
+        text-shadow: 0 0 10px #FFA94D;
+    }
+
     .logout-btn {
-        background-color: #2973B2;
-        border-color: #2973B2;
-        color: white !important;
+        background-color: #FF7300;
+        border-color: #FF7300;
+        color: black !important;
         margin-left: 10px;
+        font-weight: bold;
+        box-shadow: 0 0 10px #FF7300;
     }
+
     .logout-btn:hover {
-        background-color: #9ACBD0;
-        border-color: #9ACBD0;
-        color: white !important;
+        background-color: #FFA94D;
+        border-color: #FFA94D;
+        color: black !important;
+        box-shadow: 0 0 15px #FFA94D;
     }
+
     .navbar-toggler {
-        border-color: rgba(255, 255, 255, 0.5);
+        border-color: #FF7300;
     }
+
     .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='orange' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 </style>
+
+<!-- Include this Google Font for futuristic look -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">

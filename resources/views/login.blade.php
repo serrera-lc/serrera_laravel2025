@@ -12,7 +12,8 @@
 </head>
 <body>
     <div class="login-container">
-        <form method="POST" action="{{ route('login.post') }}">
+    <form action="{{ route('login') }}" method="POST">
+
             @csrf
             <h2>Login</h2>
 
@@ -29,9 +30,6 @@
             <a href="{{ route('register') }}" class="btn btn-outline-secondary">Register</a>
         </form>
 
-        @if($errors->has('login'))
-            <p class="text-danger">{{ $errors->first('login') }}</p>
-        @endif
     </div>
 </body>
 </html>

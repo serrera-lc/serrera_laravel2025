@@ -15,6 +15,7 @@ class Usersinfo extends Model
 
     // The attributes that are mass assignable
     protected $fillable = [
+        'id',
         'first_name',
         'last_name',
         'sex',
@@ -31,9 +32,5 @@ class Usersinfo extends Model
     // Specify the key type as string for UUIDs
     protected $keyType = 'string';
 
-    // Optionally, you might want to hash the password when setting it
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    
 }
