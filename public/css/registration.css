@@ -1,37 +1,112 @@
+/* registration.css */
+
+/* Global Styles */
 body {
-    background-color: #1A1A1A; /* Dark background for contrast */
+    background: linear-gradient(to right, #1A1A1A, #FF6F20);
+    height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbar {
-    background-color: #FF6F20; /* Neon orange */
-    box-shadow: 0 0 10px rgba(255, 111, 32, 0.8); /* Glowing effect */
+/* Navbar */
+nav.navbar {
+    background-color: #1A1A1A;
+    box-shadow: 0 0 15px #FF7300;
 }
 
-.navbar-brand,
-.nav-link {
-    color: #FFFFFF !important; /* Bright white for text */
+.navbar-brand {
+    color: #FF7300 !important;
+    text-shadow: 0 0 8px #FF7300;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.nav-link:hover {
-    color: #FF9F40 !important; /* Lighter neon orange on hover */
-    text-shadow: 0 0 5px rgba(255, 159, 64, 0.7); /* Glow effect */
+/* Card Container */
+.card {
+    background-color: #2E2E2E;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 111, 32, 0.4);
+    color: white;
 }
 
-.logout-btn {
-    background-color: #FF6F20; /* Neon orange */
-    border-color: #FF6F20; /* Matching border */
-    color: white !important; /* Bright white */
-    transition: 0.3s;
+/* Heading */
+.card h2 {
+    color: #FF7300;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 111, 32, 0.6);
 }
 
-.logout-btn:hover {
-    background-color: #FF9F40; /* Lighter neon orange */
-    border-color: #FF9F40; /* Matching border */
+/* Labels */
+.form-label {
+    color: #FFA94D;
+    font-weight: bold;
 }
 
-.container {
-    margin-top: 20px;
-    padding: 20px; /* Added padding for better spacing */
-    border-radius: 10px; /* Rounded corners */
-    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+/* Inputs & Selects */
+.form-control {
+    background-color: #1A1A1A;
+    border: 1px solid #FF7300;
+    color: white;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    background-color: #1A1A1A;
+    border-color: #FFA94D;
+    box-shadow: 0 0 8px rgba(255, 159, 64, 0.5);
+    color: white;
+}
+
+/* Checkbox */
+.form-check-label {
+    color: #F5F5F5;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #FF7300;
+    border: none;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 10px #FF7300;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #FFA94D;
+    box-shadow: 0 0 15px #FFA94D;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #444;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}
+
+/* Responsive Fix */
+@media (max-width: 576px) {
+    .card {
+        padding: 20px 15px;
+    }
+
+    .form-label, .form-control {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
 }

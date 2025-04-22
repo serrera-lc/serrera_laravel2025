@@ -12,7 +12,7 @@
     @include('nav')
 
     <div class="container">
-        <h2>Welcome to Your Dashboard !</h2>
+        <h2>Welcome to Your Dashboard, {{ session('user')->first_name ?? 'Guest' }}!</h2>
         <p>Here is where you can manage your account and settings.</p>
     </div>
 
