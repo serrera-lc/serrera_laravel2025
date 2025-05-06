@@ -1,47 +1,72 @@
+/* Import a futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 body {
-    background-color: #1A1A1A; /* Dark background for contrast */
+    background-color: #1A1A1A;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
 }
 
+/* Navbar with neon glow */
 .navbar {
-    background-color: #FF6F20; /* Neon orange */
-    box-shadow: 0 0 10px rgba(255, 111, 32, 0.8); /* Glowing effect */
+    background-color: #FF6F00;
+    box-shadow: 0 0 15px #FF6F00;
 }
 
 .navbar-brand,
 .nav-link {
-    color: #FFFFFF !important; /* Bright white for text */
+    color: #FFFFFF !important;
+    text-shadow: 0 0 5px #FFB300;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #FF9F40 !important; /* Lighter neon orange on hover */
-    text-shadow: 0 0 5px rgba(255, 159, 64, 0.7); /* Glow effect */
+    color: #FFB300 !important;
+    text-shadow: 0 0 8px #FFB300;
 }
 
+/* Logout button with glow */
 .logout-btn {
-    background-color: #FF6F20; /* Neon orange */
-    border-color: #FF6F20; /* Matching border */
-    color: white !important; /* Bright white */
-    box-shadow: 0 0 10px rgba(255, 111, 32, 0.8); /* Glowing effect */
+    background-color: #FF3D00;
+    border-color: #FF3D00;
+    color: white !important;
+    box-shadow: 0 0 10px #FF3D00;
+    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
 .logout-btn:hover {
-    background-color: #FF9F40; /* Lighter neon orange */
-    border-color: #FF9F40; /* Matching border */
-    color: white !important; /* Bright white */
+    background-color: #FFAB40;
+    border-color: #FFAB40;
+    color: white !important;
+    box-shadow: 0 0 15px #FFAB40;
 }
 
+/* Container styling */
 .container {
     margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #FF6F00;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FF6F00;
+    background-color: rgba(255, 111, 0, 0.05); /* subtle neon-orange tint */
 }
 
+/* Responsive logout button spacing */
 .logout-btn {
-    margin-left: 10px; /* Align button nicely */
+    margin-left: 10px;
 }
 
+/* Burger icon styling */
 .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Add smooth transitions globally */
+* {
+    transition: all 0.2s ease-in-out;
 }

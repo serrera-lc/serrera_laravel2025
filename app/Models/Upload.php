@@ -9,6 +9,8 @@ class Upload extends Model
 {
     use HasFactory;
 
+    protected $table = 'uploads';
+
     protected $fillable = [
         'original_filename',
         'filename',
@@ -16,9 +18,9 @@ class Upload extends Model
         'uploaded_by',
     ];
 
-    // Relationship: An upload belongs to a user
+    // Relationship: Upload belongs to a user
     public function user()
     {
-        return $this->belongsTo(User::class, 'uploaded_by');
+        return $this->belongsTo(Usersinfo::class, 'uploaded_by');
     }
 }

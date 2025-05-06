@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usersinfo;
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Notifications\ChangePasswordNotification;
 
 class PasswordController extends Controller
 {
@@ -15,21 +17,18 @@ class PasswordController extends Controller
         return view('edit-password');
     }
 
-    public function update(Request $request)
+    public function update(UpdatePasswordRequest $request)
     {
         $user = Usersinfo::find(session('user')->id);
-
+    
         if (!$user || !Hash::check($request->old_password, $user->password)) {
             return back()->withErrors(['old_password' => 'Old password is incorrect.']);
         }
-
-        if ($request->new_password !== $request->confirm_password) {
-            return back()->withErrors(['confirm_password' => 'New passwords do not match.']);
-        }
-
+    
         $user->password = Hash::make($request->new_password);
         $user->save();
-
+        $user->notify(new ChangePasswordNotification());
+    
         return back()->with('success', 'Password updated successfully!');
     }
 }

@@ -1,0 +1,51 @@
+.toast-container {
+    max-width: 400px;
+}
+
+.toast {
+    border-radius: 0.75rem;
+    box-shadow: 0 0 15px rgba(255, 111, 0, 0.3); /* Neon glow */
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(30, 30, 30, 0.95); /* Dark semi-transparent background */
+    color: white;
+    border-left: 4px solid #FF6F00; /* Neon orange accent line */
+    font-family: 'Orbitron', sans-serif;
+}
+
+.toast .toast-body {
+    font-weight: 500;
+    padding: 0;
+    color: white;
+}
+
+.toast.bg-success {
+    background: linear-gradient(135deg, #44d977, #1e9b5c); /* Neon-ish green */
+    color: white;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.toast.bg-danger {
+    background: linear-gradient(135deg, #FF3D00, #B71C1C); /* Neon red-orange */
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 61, 0, 0.5);
+}
+
+.btn-close {
+    filter: brightness(100%);
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.toast ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.toast li {
+    list-style-type: disc;
+}

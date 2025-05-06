@@ -4,56 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Upload;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
-    // Method to handle file upload
+    public function create()
+    {
+        return view('upload');
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'file' => 'required|file|max:5120', // Max 5MB
-        ]);
+        foreach ($request->file('file') as $file) {
+            $hashedName = $file->hashName();
+            $file->storeAs('uploads', $hashedName, 'public');
 
-        $file = $request->file('file');
-
-        $originalName = $file->getClientOriginalName();
-        $type = $file->getClientMimeType();
-        $filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
-
-        // Save file to storage/app/uploads
-        $file->storeAs('uploads', $filename);
-
-        // Save the file record in the database
-        $upload = Upload::create([
-            'original_filename' => $originalName,
-            'filename' => $filename,
-            'type' => $type,
-            'uploaded_by' => Auth::id(),
-        ]);
-
-        return redirect()->route('uploads.index')->with('success', 'File uploaded successfully!');
-    }
-
-    // Method to list all uploaded files
-    public function index()
-    {
-        $uploads = Upload::all(); // Get all uploads
-        return view('uploads.index', compact('uploads'));
-    }
-
-    // Method to download file
-    public function download($id)
-    {
-        $upload = Upload::findOrFail($id); // Find file by ID
-
-        // Check if file exists in storage
-        if (Storage::exists('uploads/' . $upload->filename)) {
-            return Storage::download('uploads/' . $upload->filename, $upload->original_filename);
+            Upload::create([
+                'original_filename' => $file->getClientOriginalName(),
+                'filename' => $hashedName,
+                'type' => $file->getClientMimeType(),
+                'uploaded_by' => session('user')->id,
+            ]);
         }
 
-        return redirect()->route('uploads.index')->with('error', 'File not found.');
+        return redirect()->route('upload.index')->with('success', 'Files uploaded successfully.');
+    }
+
+    public function index(Request $request)
+    {
+        $query = Upload::where('uploaded_by', session('user')->id);
+
+        if ($request->filled('filename')) {
+            $query->where('original_filename', 'like', '%' . $request->filename . '%');
+        }
+
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
+        $uploads = $query->paginate(10)->withQueryString();
+
+        return view('my-uploads', compact('uploads'));
+    }
+
+    public function download(Upload $upload)
+    {
+        if ($upload->uploaded_by !== session('user')->id) {
+            abort(403);
+        }
+
+        return Storage::disk('public')->download('uploads/' . $upload->filename, $upload->original_filename);
+    }
+
+    public function destroy(Upload $upload)
+    {
+        if ($upload->uploaded_by !== session('user')->id) {
+            abort(403);
+        }
+
+        Storage::disk('public')->delete('uploads/' . $upload->filename);
+        $upload->delete();
+
+        return back()->with('success', 'File deleted successfully.');
     }
 }

@@ -7,34 +7,52 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        body {
-            background-color: #F2EFE7;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-        .navbar {
-            background-color: #48A6A7;
-        }
+    body {
+        background-color: #0f0f0f;
+        font-family: 'Orbitron', sans-serif;
+        color: white;
+    }
 
-        .navbar-brand,
-        .nav-link {
-            color: white !important;
-        }
+    .navbar {
+        background-color: #FF6F00; /* Neon orange */
+        box-shadow: 0 2px 8px rgba(255, 111, 0, 0.3);
+    }
 
-        .logout-btn {
-            background-color: #2973B2;
-            border-color: #2973B2;
-        }
+    .navbar-brand,
+    .nav-link {
+        color: white !important;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
 
-        .logout-btn:hover {
-            background-color: #9ACBD0;
-            border-color: #9ACBD0;
-        }
+    .nav-link:hover {
+        color: #FFB300 !important; /* Lighter neon orange on hover */
+        text-shadow: 0 0 5px #FF6F00;
+    }
 
-        .container {
-            margin-top: 20px;
-        }
-    </style>
-    
+    .logout-btn {
+        background-color: #FF3D00; /* Neon orange */
+        border-color: #FF3D00;
+        color: white !important;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+    .logout-btn:hover {
+        background-color: #FFAB40;
+        border-color: #FFAB40;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px #FF6F00;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+</style>
+
 </head>
 <body>
     @include('nav')
