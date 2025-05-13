@@ -138,41 +138,31 @@
 <body>
 
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-            </a>
-            <ul class="navbar-nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('upload.index') }}">
-                        <i class="fas fa-cloud-upload-alt"></i> Uploaded Files
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="fas fa-user-edit"></i> Edit Profile
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('password.edit') }}">
-                        <i class="fas fa-key"></i> Change Password
-                    </a>
-                </li>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+            aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item"><a class="nav-link" href="{{ route('upload.index') }}">Uploaded Files</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">Edit Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('password.edit') }}">Change Password</a></li>
                 @if(session('user') && session('user')->user_type === 'Admin')
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.list') }}">
-                            <i class="fas fa-users"></i> Users
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('user.list') }}">Users</a></li>
+                @endif
+                @if(session('user') && session('user')->user_type === 'Admin')
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.reports') }}">Reports</a></li>
                 @endif
             </ul>
-            <div class="d-flex flex-column">
-                <a class="btn logout-btn" href="{{ route('login') }}">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-            </div>
         </div>
-    </nav>
+        <div class="d-flex">
+            <a class="btn logout-btn" href="{{ route('login') }}">Logout</a>
+        </div>
+    </div>
+</nav>
 
     <div class="main-content">
         <!-- Your page content goes here -->
