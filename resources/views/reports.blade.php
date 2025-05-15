@@ -24,7 +24,7 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="fileType-tab" data-bs-toggle="tab" data-bs-target="#fileType"
                     type="button" role="tab" aria-controls="fileType" aria-selected="true"
-                    style="color: #0d6efd; background-color:rgb(6, 126, 246); border: 1px solid #dee2e6; border-bottom: none; padding: 10px 16px; font-weight: 500;">
+                    style="color: white; background-color:#ff7f00; border: 1px solid #ff7f00; border-bottom: none; padding: 10px 16px; font-weight: 500;">
                     File Types
                 </button>
             </li>
@@ -32,21 +32,21 @@
                 <button class="nav-link" id="userRegistration-tab" data-bs-toggle="tab"
                     data-bs-target="#userRegistration" type="button" role="tab" aria-controls="userRegistration"
                     aria-selected="false"
-                    style="color: #0d6efd; background-color:rgb(6, 126, 246); border: 1px solid #dee2e6; border-bottom: none; padding: 10px 16px; font-weight: 500;">
+                    style="color: white; background-color:#ff7f00; border: 1px solid #ff7f00; border-bottom: none; padding: 10px 16px; font-weight: 500;">
                     User Registration Trend
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="birthYear-tab" data-bs-toggle="tab" data-bs-target="#birthYear"
                     type="button" role="tab" aria-controls="birthYear" aria-selected="false"
-                    style="color: #0d6efd; background-color:rgb(6, 126, 246); border: 1px solid #dee2e6; border-bottom: none; padding: 10px 16px; font-weight: 500;">
+                    style="color: white; background-color:#ff7f00; border: 1px solid #ff7f00; border-bottom: none; padding: 10px 16px; font-weight: 500;">
                     Users by Birth Year
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="fileUpload-tab" data-bs-toggle="tab" data-bs-target="#fileUpload"
                     type="button" role="tab" aria-controls="fileUpload" aria-selected="false"
-                    style="color: #0d6efd;background-color:rgb(6, 126, 246); border: 1px solid #dee2e6; border-bottom: none; padding: 10px 16px; font-weight: 500;">
+                    style="color: white; background-color:#ff7f00; border: 1px solid #ff7f00; border-bottom: none; padding: 10px 16px; font-weight: 500;">
                     File Uploads Trend
                 </button>
             </li>

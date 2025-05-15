@@ -41,29 +41,35 @@ class UserController extends Controller
     }
 
 
-    public function destroy($id)
-    {
-        $currentUser = session('user');
+  // Your destroy method stays the same:
+public function destroy($id)
+{
+    $currentUser = session('user');
 
-        // Only allow admin to delete users
-        if (!$currentUser || $currentUser->user_type !== 'Admin') {
-            abort(403, 'Access denied');
-        }
+    if (!$currentUser || $currentUser->user_type !== 'Admin') {
+        abort(403, 'Access denied');
+    }
 
-        // Don't allow deleting yourself
-        if ($currentUser->id == $id) {
-            return back()->withErrors(['delete' => 'You cannot delete your own account.']);
-        }
+    if ($currentUser->id == $id) {
+        return back()->withErrors(['delete' => 'You cannot delete your own account.']);
+    }
 
-        $user = Usersinfo::find($id);
+    $user = Usersinfo::find($id);
 
-        if ($user) {
-            $user->delete();
-            return back()->with('success', 'User deleted successfully.');
-        }
-
+    if (!$user) {
         return back()->withErrors(['delete' => 'User not found.']);
     }
+
+    $hasUploads = Upload::where('uploaded_by', $id)->exists();
+
+    if ($hasUploads) {
+        return back()->withErrors(['delete' => 'Cannot delete user with existing uploads.']);
+    }
+
+    $user->delete();
+
+    return back()->with('success', 'User deleted successfully.');
+}
 
 
 
