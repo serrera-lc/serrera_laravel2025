@@ -7,7 +7,109 @@
     <title>User List</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <style>
-        /* your existing CSS here */
+        body {
+            background: #0d0d0d;
+            color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h2 {
+            color: #ff9100;
+            text-shadow: 0 0 10px #ff9100;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #ff9100;
+            box-shadow: 0 0 15px #ff910066;
+        }
+
+        .form-control,
+        .btn {
+            border-radius: 8px;
+        }
+
+        .form-control {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #ff9100;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px #ff9100;
+            border-color: #ff9100;
+        }
+
+        .btn-primary {
+            background-color: #ff9100;
+            border-color: #ff9100;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-outline-secondary {
+            color: #ccc;
+            border-color: #666;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #00ffc3;
+            border-color: #00ffc3;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-danger {
+            background-color: #ff4d4d;
+            border-color: #ff4d4d;
+            font-weight: bold;
+        }
+
+        table {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 10px #ff910033;
+        }
+
+        th {
+            color: #ff9100;
+            border-bottom: 2px solid #ff9100;
+        }
+
+        td {
+            vertical-align: middle;
+            border-color: #333;
+        }
+
+        .alert {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .pagination .page-link {
+            background-color: #111;
+            color: #ff9100;
+            border: 1px solid #ff9100;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #ff9100;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #333;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -24,7 +126,6 @@
     @endif
 
     <script>
-        // Reload page after 3 seconds if there's an alert message
         if (document.getElementById('alert-message')) {
             setTimeout(() => {
                 window.location.reload();
@@ -41,12 +142,12 @@
                     <div class="row g-3 align-items-end">
                         <div class="col-md-4">
                             <label for="searchName" class="form-label">Search by Name</label>
-                            <input type="text" id="searchName" name="name" placeholder="e.g. John"
+                            <input type="text" id="searchName" name="name" placeholder="e.g. Sean"
                                 value="{{ request('name') }}" class="form-control" />
                         </div>
                         <div class="col-md-4">
                             <label for="searchEmail" class="form-label">Search by Email</label>
-                            <input type="text" id="searchEmail" name="email" placeholder="e.g. john@example.com"
+                            <input type="text" id="searchEmail" name="email" placeholder="e.g. seanrodel@example.com"
                                 value="{{ request('email') }}" class="form-control" />
                         </div>
                         <div class="col-md-4 d-flex flex-wrap gap-2">

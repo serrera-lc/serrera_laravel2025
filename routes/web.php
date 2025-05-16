@@ -47,7 +47,6 @@ Route::get('/dashboard', function (){
 //     return view('registration');
 // })->name('register');
 
-//REGISTRATION CONTROLLER --  TODO: MOVE TO A CONTROLLER FOR A BETTER CODE AYAW KALIMTA.
 
 Route::post('/register', [RegistrationController:: class, 'save'])->name('register.save');
 
@@ -82,6 +81,10 @@ Route::middleware([])->group(function () {
     Route::get('/my-uploads', [UploadController::class, 'index'])->name('upload.index');
     Route::get('/download/{upload}', [UploadController::class, 'download'])->name('upload.download');
     Route::delete('/upload/{upload}', [UploadController::class, 'destroy'])->name('upload.destroy');
+       // Add this route for showing the edit form:
+        Route::put('/upload/{upload}', [UploadController::class, 'update'])->name('upload.update');
+Route::get('/upload/{upload}/edit', [UploadController::class, 'edit'])->name('upload.edit');
+
 });
 
 
@@ -116,3 +119,4 @@ Route::get('/users/export', [UserController::class, 'export'])->name('user.expor
 
 
 Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
+

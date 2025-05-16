@@ -115,7 +115,11 @@
             @csrf
             <div class="mb-3">
                 <label for="file" class="form-label">Choose Files</label>
-                <input type="file" name="file[]" class="form-control @error('file.*') is-invalid @enderror" multiple required>
+                <input id="file" type="file" name="file[]" class="form-control @error('file.*') is-invalid @enderror" multiple required>
+
+                @error('file')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
                 @error('file.*')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

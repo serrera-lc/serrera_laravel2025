@@ -17,31 +17,22 @@
             color: #dc3545;
         }
 
-        /* red */
         .strength-medium {
             color: #ffc107;
         }
 
-        /* yellow */
         .strength-strong {
             color: #28a745;
         }
-
-        /* green */
     </style>
 </head>
-
 
 <body>
     <nav class="nav bar navbar-expanded-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">
-
-            </a>
+            <a class="navbar-brand" href="#"></a>
         </div>
-
     </nav>
-
 
     <div class="container">
         <div class="row justify-content-center">
@@ -50,6 +41,7 @@
                     <h2 class="mb-3">Register</h2>
                     <form method="POST" action="{{ route('register.save') }}">
                         @csrf
+
                         <div class="mb-3">
                             <label for="firstname" class="form-label">First Name</label>
                             <input type="text" class="form-control @error('firstname') is-invalid @enderror"
@@ -58,6 +50,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="lastname" class="form-label">Last Name</label>
                             <input type="text" class="form-control @error('lastname') is-invalid @enderror"
@@ -66,6 +59,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="bod" class="form-label">Date of Birth</label>
                             <input type="date" class="form-control @error('bod') is-invalid @enderror" id="bod"
@@ -73,8 +67,8 @@
                             @error('bod')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-
                         </div>
+
                         <div class="mb-3">
                             <label for="sex" class="form-label">Sex</label>
                             <select class="form-control @error('sex') is-invalid @enderror" id="sex" name="sex">
@@ -86,6 +80,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
@@ -94,6 +89,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror"
@@ -101,40 +97,47 @@
                             @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                        </div>
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                id="password" name="password">
-                            <div id="password-strength" class="mt-1 fw-semibold"></div>
-                            @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        <!-- Inside your <form> -->
+<div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control @error('password') is-invalid @enderror"
+        id="password" name="password">
+    @error('password')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label for="password_confirmation" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+        id="password_confirmation" name="password_confirmation">
+    @error('password_confirmation')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input @error('terms') is-invalid @enderror"
                                 id="terms" name="terms" {{ old('terms') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="terms">I agree with the Privacy Policy and Terms and
+                                Conditions</label>
                             @error('terms')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-
-                            <label class="form-check-label" for="terms">I agree with the Privacy Policy and Terms and
-                                Conditions</label>
                         </div>
+
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                         <br><br>
                         <a href="{{ route('login') }}" class="btn btn-secondary w-100">Go Back</a>
                     </form>
-
                 </div>
-
             </div>
-
         </div>
     </div>
-    <script src="{{ asset('js/password-strength.js') }}"></script>
 
+    <script src="{{ asset('js/password-strength.js') }}"></script>
 </body>
 
 </html>

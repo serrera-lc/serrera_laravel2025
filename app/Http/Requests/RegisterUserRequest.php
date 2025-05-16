@@ -6,19 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterUserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
@@ -28,7 +20,7 @@ class RegisterUserRequest extends FormRequest
             'sex' => 'required|in:Male,Female',
             'email' => 'required|email|unique:usersinfo,email',
             'username' => 'required|string|unique:usersinfo,username',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8|confirmed', // ✅ Password confirmation
             'terms' => 'accepted',
         ];
     }
@@ -38,6 +30,7 @@ class RegisterUserRequest extends FormRequest
         return [
             'firstname.regex' => 'The first name may only contain letters, spaces, hyphens, and apostrophes.',
             'lastname.regex' => 'The last name may only contain letters, spaces, hyphens, and apostrophes.',
+            'password.confirmed' => 'The password confirmation does not match.',
         ];
     }
 
@@ -49,5 +42,4 @@ class RegisterUserRequest extends FormRequest
             'username' => trim($this->username),
         ]);
     }
-    
 }

@@ -2,35 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UploadFileRequest;
+use App\Http\Requests\UpdateFileRequest;
 use App\Models\Upload;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
-    public function create()
-    {
-        return view('upload');
-    }
-
-    public function store(Request $request)
-    {
-        foreach ($request->file('file') as $file) {
-            $hashedName = $file->hashName();
-            $file->storeAs('uploads', $hashedName, 'public');
-
-            Upload::create([
-                'original_filename' => $file->getClientOriginalName(),
-                'filename' => $hashedName,
-                'type' => $file->getClientMimeType(),
-                'uploaded_by' => session('user')->id,
-            ]);
-        }
-
-        return redirect()->route('upload.index')->with('success', 'Files uploaded successfully.');
-    }
-
     public function index(Request $request)
     {
         $query = Upload::where('uploaded_by', session('user')->id);
@@ -46,6 +25,28 @@ class UploadController extends Controller
         $uploads = $query->paginate(10)->withQueryString();
 
         return view('my-uploads', compact('uploads'));
+    }
+
+    public function create()
+    {
+        return view('upload');
+    }
+
+    public function store(UploadFileRequest $request)
+    {
+        foreach ($request->file('file') as $file) {
+            $hashedName = $file->hashName();
+            $file->storeAs('uploads', $hashedName, 'public');
+
+            Upload::create([
+                'original_filename' => $file->getClientOriginalName(),
+                'filename' => $hashedName,
+                'type' => $file->getClientMimeType(),
+                'uploaded_by' => session('user')->id,
+            ]);
+        }
+
+        return redirect()->route('upload.index')->with('success', 'Files uploaded successfully.');
     }
 
     public function download(Upload $upload)
@@ -68,4 +69,37 @@ class UploadController extends Controller
 
         return back()->with('success', 'File deleted successfully.');
     }
+
+    public function update(UpdateFileRequest $request, Upload $upload)
+    {
+        if ($upload->uploaded_by !== session('user')->id) {
+            abort(403);
+        }
+
+        // Delete old file
+        Storage::disk('public')->delete('uploads/' . $upload->filename);
+
+        // Upload new file
+        $file = $request->file('file');
+        $hashedName = $file->hashName();
+        $file->storeAs('uploads', $hashedName, 'public');
+
+        // Update database record
+        $upload->update([
+            'original_filename' => $file->getClientOriginalName(),
+            'filename' => $hashedName,
+            'type' => $file->getClientMimeType(),
+        ]);
+
+        return redirect()->route('upload.index')->with('success', 'File updated successfully.');
+    }
+
+
+    public function edit(Upload $upload)
+{
+    if ($upload->uploaded_by !== session('user')->id) {
+        abort(403);
+    }
+    return view('upload-edit', compact('upload'));
+}
 }

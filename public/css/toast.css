@@ -3,49 +3,131 @@
 }
 
 .toast {
-    border-radius: 0.75rem;
-    box-shadow: 0 0 15px rgba(255, 111, 0, 0.3); /* Neon glow */
-    font-size: 0.95rem;
-    padding: 0.75rem 1rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    border-radius: 1rem;
+    box-shadow:
+        0 0 8px #ff6f00aa,
+        0 0 20px #ff6f00cc,
+        0 0 30px #ff6f0055,
+        inset 0 0 8px #ff6f00cc;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease-in-out;
-    background-color: rgba(30, 30, 30, 0.95); /* Dark semi-transparent background */
-    color: white;
-    border-left: 4px solid #FF6F00; /* Neon orange accent line */
+    background-color: rgba(40, 40, 40, 0.95);
+    color: #ffb347; /* softer neon orange text */
+    border-left: 6px solid #ff6f00; /* bright neon orange accent */
     font-family: 'Orbitron', sans-serif;
+    animation: neonPulse 3s ease-in-out infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+.toast::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -40%;
+    width: 180%;
+    height: 160%;
+    background: radial-gradient(circle at center, #ff6f00cc, transparent 70%);
+    filter: blur(20px);
+    opacity: 0.5;
+    animation: neonGlowMove 3s linear infinite;
+    pointer-events: none;
+    border-radius: 1rem;
 }
 
 .toast .toast-body {
-    font-weight: 500;
+    font-weight: 600;
     padding: 0;
-    color: white;
+    color: #ffb347;
+    text-shadow:
+        0 0 4px #ff6f00,
+        0 0 10px #ff6f00cc;
 }
 
 .toast.bg-success {
-    background: linear-gradient(135deg, #44d977, #1e9b5c); /* Neon-ish green */
-    color: white;
-    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+    background: linear-gradient(135deg, #44d977, #1e9b5c);
+    color: #d1f7cc;
+    box-shadow:
+        0 0 10px #2ecc40aa,
+        0 0 25px #27ae60cc,
+        inset 0 0 10px #2ecc40cc;
+    border-left-color: #27ae60;
+    animation: none;
 }
 
 .toast.bg-danger {
-    background: linear-gradient(135deg, #FF3D00, #B71C1C); /* Neon red-orange */
-    color: white;
-    box-shadow: 0 0 10px rgba(255, 61, 0, 0.5);
+    background: linear-gradient(135deg, #ff3d00, #b71c1c);
+    color: #ffd1bc;
+    box-shadow:
+        0 0 12px #ff3d00cc,
+        0 0 28px #b71c1ccc,
+        inset 0 0 12px #ff3d00cc;
+    border-left-color: #ff3d00;
+    animation: neonPulse 3s ease-in-out infinite alternate;
 }
 
 .btn-close {
     filter: brightness(100%);
     background-color: transparent;
     border: none;
-    color: white;
+    color: #ff6f00;
+    font-weight: bold;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    color: #ffb347;
+    text-shadow: 0 0 8px #ff6f00;
 }
 
 .toast ul {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 1.2rem;
 }
 
 .toast li {
     list-style-type: disc;
+}
+
+/* Neon glowing pulse animation */
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 8px #ff6f00aa,
+            0 0 20px #ff6f00cc,
+            0 0 30px #ff6f0055,
+            inset 0 0 8px #ff6f00cc;
+        color: #ffb347;
+        border-left-color: #ff6f00;
+    }
+    50% {
+        box-shadow:
+            0 0 14px #ff6f00dd,
+            0 0 30px #ff6f00ee,
+            0 0 45px #ff6f0088,
+            inset 0 0 14px #ff6f00ee;
+        color: #fff0b3;
+        border-left-color: #ffa733;
+    }
+}
+
+/* Moving glowing highlight */
+@keyframes neonGlowMove {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0.5;
+    }
 }
