@@ -90,7 +90,14 @@
                 labels: {!! json_encode($fileTypes->pluck('type')) !!},
                 datasets: [{
                     data: {!! json_encode($fileTypes->pluck('count')) !!},
-                    backgroundColor: ['#f87979', '#a2d5f2', '#b4f2e1', '#ffe066'],
+                   backgroundColor: [
+  '#ff073a', // Neon Red
+  '#ff8c00', // Neon Orange
+  '#ffff33', // Neon Yellow
+  '#39ff14', // Neon Green
+  '#1f51ff', // Neon Blue
+  '#c724b1'  // Neon Violet
+],
                 }]
             }
         });
