@@ -29,8 +29,8 @@ class UsertableSeeder extends Seeder
                 'user_type' => 'Admin',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'email_verified_at' => null,
-                'verification_token' => Str::random(32),
+                'email_verified_at' => now(), // ✅ Email is marked as verified
+                'verification_token' => null, // Optional: can be null if verified
             ],
             [
                 'id' => Str::uuid(),
@@ -45,13 +45,8 @@ class UsertableSeeder extends Seeder
                 'user_type' => 'Customer',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'email_verified_at' => null,
+                'email_verified_at' => null, // ✅ Still requires verification
                 'verification_token' => Str::random(32),
-                
-                
-
-
-                
             ]
         ]);
     }

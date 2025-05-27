@@ -2,10 +2,17 @@
 <html lang="en">
 
 <head>
+    <!-- Meta configuration for character encoding and responsiveness -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Page Title -->
     <title>User List</title>
+
+    <!-- Bootstrap CSS file (Laravel asset helper used) -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+
+    <!-- Custom styling for dark theme and neon orange branding -->
     <style>
         body {
             background: #0d0d0d;
@@ -115,16 +122,20 @@
 
 <body>
 
+    <!-- Include navigation bar using Blade include directive -->
     @include('nav')
 
+    <!-- Show success message from session if available -->
     @if (session('success'))
         <div class="alert alert-success mt-2 text-center" id="alert-message">{{ session('success') }}</div>
     @endif
 
+    <!-- Show error message (if delete failed) -->
     @if ($errors->has('delete'))
         <div class="alert alert-danger mt-2 text-center" id="alert-message">{{ $errors->first('delete') }}</div>
     @endif
 
+    <!-- Auto-refresh the page 3 seconds after showing any alert message -->
     <script>
         if (document.getElementById('alert-message')) {
             setTimeout(() => {
@@ -134,22 +145,27 @@
     </script>
 
     <div class="container mt-5">
+        <!-- Page header -->
         <h2 class="text-center mb-4">User List</h2>
 
+        <!-- Search & Filter Form -->
         <div class="card mb-4">
             <div class="card-body">
                 <form method="GET" action="{{ route('user.list') }}">
                     <div class="row g-3 align-items-end">
+                        <!-- Name filter input -->
                         <div class="col-md-4">
                             <label for="searchName" class="form-label">Search by Name</label>
                             <input type="text" id="searchName" name="name" placeholder="e.g. Sean"
                                 value="{{ request('name') }}" class="form-control" />
                         </div>
+                        <!-- Email filter input -->
                         <div class="col-md-4">
                             <label for="searchEmail" class="form-label">Search by Email</label>
                             <input type="text" id="searchEmail" name="email" placeholder="e.g. seanrodel@example.com"
                                 value="{{ request('email') }}" class="form-control" />
                         </div>
+                        <!-- Filter / Clear / Export buttons -->
                         <div class="col-md-4 d-flex flex-wrap gap-2">
                             <button type="submit" class="btn btn-primary">Filter</button>
                             @if(request('name') || request('email'))
@@ -162,6 +178,7 @@
             </div>
         </div>
 
+        <!-- User Table -->
         <div class="table-responsive rounded p-3">
             <table class="table table-hover align-middle mb-0 text-center">
                 <thead>
@@ -174,6 +191,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through each user and display their info -->
                     @foreach($users as $user)
                         <tr>
                             <td>{{ $user->first_name }} {{ $user->last_name }}</td>
@@ -181,6 +199,7 @@
                             <td>{{ $user->username }}</td>
                             <td>{{ ucfirst($user->user_type) }}</td>
                             <td>
+                                <!-- Delete user form with confirmation -->
                                 <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline"
                                     onsubmit="return confirm('Are you sure you want to delete this user?');">
                                     @csrf
@@ -196,11 +215,11 @@
             </table>
         </div>
 
+        <!-- Laravel pagination links -->
         <div class="d-flex justify-content-center mt-4">
             {{ $users->onEachSide(1)->links('pagination::bootstrap-5') }}
         </div>
     </div>
 
 </body>
-
 </html>
